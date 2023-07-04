@@ -1,5 +1,4 @@
 import React from "react";
-import Page404 from "../pages/Page404";
 const picture = ({ data }) => {
   return (
     <div className="picture">

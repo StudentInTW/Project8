@@ -1,6 +1,5 @@
 //App.js 製作的Component是擔任其他component的容器
 
-import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import Homepage from "./pages/Homepage";

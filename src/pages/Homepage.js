@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Search from "../components/Search";
 import axios from "axios";
 import Picture from "../components/picture";
-import Page404 from "./Page404";
 
 const Homepage = () => {
   let [input, setInput] = useState("");
@@ -15,9 +14,6 @@ const Homepage = () => {
   const perPage = 15;
 
   const search = async (url) => {
-    if (!input) {
-      return; // 如果 input 為空，不執行搜尋
-    }
     let result = await axios.get(url, {
       headers: { Authorization: auth },
     });
@@ -57,24 +53,17 @@ const Homepage = () => {
           search(searchURL);
         }}
         setInput={setInput}
-        data={data}
       />
 
-      {data && data.length > 0 ? (
-        <div className="pictures">
-          {data.map((d) => {
-            return <Picture data={d} key={d.id} />;
+      <div className="pictures">
+        {data &&
+          data.map((d) => {
+            return <Picture data={d} />;
           })}
-        </div>
-      ) : (
-        <Page404 />
-      )}
-
-      {data && data.length > 0 && (
-        <div className="morePicture">
-          <button onClick={morePicture}>More</button>
-        </div>
-      )}
+      </div>
+      <div className="morePicture">
+        <button onClick={morePicture}>更多圖片</button>
+      </div>
     </div>
   );
 };
