@@ -5,9 +5,20 @@ const Search = ({ search, setInput }) => {
     setInput(e.target.value);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      search();
+    }
+  };
+
   return (
     <div className="search">
-      <input type="text" onChange={inputHandler} className="input" />
+      <input
+        type="text"
+        onChange={inputHandler}
+        onKeyDown={handleKeyDown}
+        className="input"
+      />
       <button onClick={search}>Search</button>
     </div>
   );
